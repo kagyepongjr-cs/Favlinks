@@ -6,23 +6,23 @@ function LinkContainer() {
   const [favLinks, setFavLinks] = useState([])
 
   useEffect(() => {
-    fetch('http://localhost:3000/users')
+    fetch('https://project4-rc5x.onrender.com/users')
       .then(res => res.json())
       .then(data => setFavLinks(data))
   }, [])
 
   const handleRemove = (id) => {
-    fetch(`http://localhost:3000/users/${id}`, { method: 'DELETE' })
+    fetch(`https://project4-rc5x.onrender.com/users/${id}`, { method: 'DELETE' })
       .then(() => setFavLinks(favLinks.filter(link => link.id !== id)))
   }
 
   const handleSubmit = (favLink) => {
-    fetch('http://localhost:3000/users', {
+    fetch('https://project4-rc5x.onrender.com/users', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(favLink)
     })
-      .then(() => fetch('http://localhost:3000/users')
+      .then(() => fetch('https://project4-rc5x.onrender.com/users')
         .then(res => res.json())
         .then(data => setFavLinks(data)))
   }
